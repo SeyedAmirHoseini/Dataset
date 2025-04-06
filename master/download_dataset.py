@@ -17,7 +17,8 @@ def dataset_downloader(force_update: bool, version_path: str) -> str:
     if force_update:
         print(f"📥 Dar hal download dataset {version_path}")
         api.dataset_download_files(dataset_name, path=version_path, unzip=True)
-
+        os.remove(rf"{version_path}\daily_reminder.csv")
+        os.remove(rf"{version_path}\safety_monitoring.csv")
         print("✅ Dataset ba movafaghiyat nasb shod!")
 
     return version_path
