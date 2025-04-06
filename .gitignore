@@ -1,0 +1,14 @@
+#Folders to ignore
+Scripts/
+Lib/
+
+#Files to ignore
+pyvenv.cfg
+.env
+utils.py
+
+#Other python files to ignore
+__pycache__/
+*.pyc
+*.pyo 
+*.cfg
