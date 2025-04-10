@@ -5,7 +5,6 @@ Lib/
 #Files to ignore
 pyvenv.cfg
 .env
-utils.py
 
 #Other python files to ignore
 __pycache__/
