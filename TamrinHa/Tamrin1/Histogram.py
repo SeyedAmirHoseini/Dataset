@@ -1,23 +1,23 @@
 import matplotlib.pyplot as plot
-import pandas, matplotlib, os
+import pandas, os
 
 MY_PATH = os.path.abspath(__file__)
 
-version = int(input("Which version you wanna try(You can see them in 'datasets' folder)?  "))
-
-# "../../datasets/v1/health_monitoring.csv"
+# version = int(input("Which version you wanna try(You can see them in 'datasets' folder)?  "))
+version = 2
 DATASET_PATH = os.path.join(MY_PATH, "..", "..", "..", "datasets", f"v{version}", "health_monitoring.csv")
 DATASET_PATH = os.path.abspath(DATASET_PATH)
 
 dataset = pandas.read_csv(DATASET_PATH)
 
-columns = dataset.columns
+columns = dataset.select_dtypes(include=['number']).columns # فقط داده های نامریک
 
-output = ""
+output = "*** Only Numeric options: \n"
 for i in range(len(columns)):
     output += f"{i+1}. {columns[i]}\n"
 
-column_index = int(input(f"{output}*** Type the number of each one you wanna see the outliers: "))
+
+column_index = int(input(f"{output}Type the number of each one you wanna see the histogram: "))
 
 column = columns[column_index-1]
 
@@ -32,12 +32,11 @@ lower_outlier, upper_outlier = data[data < lower], data[data > upper]
 
 outliers = pandas.concat([lower_outlier, upper_outlier], axis=0) # تلفیق دو طرف داده های پرت
 
-print(f"Number of outliers found: {len(outliers)}")
 
+# هیستوگرام
+plot.hist(data, bins=50)
+plot.title(f"Histogram of {column}")
+plot.xlabel(column)
+plot.ylabel('Frequency')
 
-# باکس پلات
-plot.boxplot(data)
-plot.title(f"BoxPlot of {column}")
-plot.ylabel(column)
-plot.grid(True)
 plot.show()
