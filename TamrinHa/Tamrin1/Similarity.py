@@ -4,12 +4,11 @@ from tkinter import ttk
 
 MY_PATH = os.path.abspath(__file__)
 
-DATASET_PATH = os.path.join(MY_PATH, "..", "..", "..", "datasets", f"v2", "health_monitoring.csv")
+DATASET_PATH = os.path.join(MY_PATH, "..", "..", "..", "datasets", "v1", "health_monitoring.csv")
 DATASET_PATH = os.path.abspath(DATASET_PATH)
 
 dataset = pandas.read_csv(DATASET_PATH)
 
-# فرض می‌کنیم که ستون "Heart Rate" که می‌خواهیم شباهت‌ها رو بر اساسش محاسبه کنیم
 columns = dataset.select_dtypes(include=['number']).columns
 
 for i in range(len(columns)):

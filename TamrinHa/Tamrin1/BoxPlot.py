@@ -4,7 +4,7 @@ import pandas, os
 MY_PATH = os.path.abspath(__file__)
 
 # version = int(input("Which version you wanna try(You can see them in 'datasets' folder)?  "))
-version = 2
+version = 1
 
 DATASET_PATH = os.path.join(MY_PATH, "..", "..", "..", "datasets", f"v{version}", "health_monitoring.csv")
 DATASET_PATH = os.path.abspath(DATASET_PATH)
