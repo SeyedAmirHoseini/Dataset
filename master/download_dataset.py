@@ -2,12 +2,15 @@ from .utils import *
 from kaggle.api.kaggle_api_extended import KaggleApi
 
 
-custom_dir, force_update = "C:\\Users\\MesterComputer\\Desktop\\dataset\\Venv\\datasets", False
+MY_PATH = os.path.abspath(__file__)
 
+DATASET_PATH = os.path.join(MY_PATH, "..", "..", "datasets")
+DATASET_PATH = os.path.abspath(DATASET_PATH)
 
-@dataset_decorator(custom_dir)
+force_update = False
+
+@dataset_decorator(DATASET_PATH)
 def dataset_downloader(force_update: bool, version_path: str) -> str:
-
     dataset_name = "suvroo/ai-for-elderly-care-and-support"
 
     json_creator()
